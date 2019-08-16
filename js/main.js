@@ -36,9 +36,10 @@ $(document).ready(function(){
     $(window).scroll(startCounter);
     // end counter
 
+    const navigation = $('.header-menu ul');
 
     $('.mobile-menu').click(function(){
-        $('.header-menu ul').slideToggle(500);
+        navigation.slideToggle(500);
     });
 
 
@@ -76,5 +77,20 @@ $('.client-slider').slick({
 });
 // END SECOND SLIDER
 
+
+// scroll menu
+
+const scrollElem = $('.header-menu ul li a');
+
+function scrollToSection(e) {
+    e.preventDefault();
+    let target = $(this).attr('href');
+    let dist = $(target).offset().top;
+    $('html, body').animate({scrollTop: dist}, 1000, 'swing');
+    navigation.slideToggle(500);
+    
+  }
+
+  scrollElem.on('click', scrollToSection);
 
 });
